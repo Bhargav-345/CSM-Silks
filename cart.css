@@ -1,0 +1,248 @@
+/* ============================================
+   CART PAGE - PROFESSIONAL REDESIGN
+   ============================================ */
+
+body {
+    overflow-x: hidden;
+    background-color: #f5f5f5;
+}
+
+/* Main cart layout: items left, summary right */
+#cards_parent {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* Left side: Cart items container */
+#cards-cont {
+    background-color: aquamarine;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+}
+
+/* Empty cart message */
+#cards-cont h1 {
+    color: #555;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 3rem 0;
+}
+
+/* Each cart item row */
+.carts-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    align-items: flex-start;
+}
+
+.carts-card:last-child {
+    border-bottom: none;
+}
+
+/* Image wrapper - small and fixed */
+.img_wrapper {
+    width: 250px;
+    height: 250px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.img_wrapper a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.img_wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.img_wrapper:hover img {
+    transform: scale(1.05);
+}
+
+/* Product details section */
+.cart-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cart-details p {
+    margin: 0 !important;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Price styling */
+.cart-price {
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    color: #5112a9 !important;
+}
+
+/* Quantity and actions section */
+.quant_total {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    min-width: 120px;
+}
+
+/* Quantity input */
+.quant_total input {
+    width: 60px;
+    height: 36px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Remove button */
+.remove-btn {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.remove-btn:hover {
+    background-color: #fee;
+}
+
+/* Right side: Price summary box */
+#buy_btn {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+    background-color: gainsboro;
+}
+
+#buy_btn h3 {
+    color: #888;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.price-row.discount {
+    color: #27ae60;
+}
+
+.price-row.total {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333;
+    padding-top: 0.8rem;
+    border-top: 1px dashed #ddd;
+    margin-top: 0.5rem;
+}
+
+#buy_btn p {
+    margin: 0 !important;
+}
+
+/* Place order button */
+#buy_btn button {
+    width: 100%;
+    padding: 1rem;
+    background: #ace822;
+    color: #5112a9;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(172, 232, 34, 0.3);
+}
+
+#buy_btn button:hover {
+    background: #9ad41f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(172, 232, 34, 0.4);
+}
+
+/* Header adjustments */
+#cart_second_layer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #5112a9;
+    align-items: center;
+}
+
+#home_ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0 !important;
+}
+
+.lists i {
+    margin-right: .3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #cards_parent {
+        grid-template-columns: 1fr;
+    }
+
+    #buy_btn {
+        position: static;
+    }
+
+    .carts-card {
+        flex-direction: column;
+    }
+
+    .img_wrapper {
+        width: 100%;
+        height: 200px;
+    }
+
+    .quant_total {
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+    }
+}
