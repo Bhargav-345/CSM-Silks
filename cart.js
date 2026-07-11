@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('subtotal').textContent = '₹' + total;
         document.getElementById('total-amount').textContent = '₹' + total;
         document.getElementById('item-count').textContent = itemCount;
-
         return total;
     }
 
@@ -43,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const img = document.createElement('img');
         img.src = item.image;
-        img.alt = item.name;
 
         a.appendChild(img);
         imgwrap.appendChild(a);
