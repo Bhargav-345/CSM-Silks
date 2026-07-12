@@ -69,3 +69,18 @@ wishbuttons.forEach(button => {
 });
 
 updatewishcount();
+
+// scroller
+document.querySelectorAll('.scroll-section').forEach(section => {
+    const container = section.querySelector('.scroll-container');
+    const leftBtn = section.querySelector('.scroll-arrow.left');
+    const rightBtn = section.querySelector('.scroll-arrow.right');
+
+    leftBtn.addEventListener('click', () => {
+        container.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+
+    rightBtn.addEventListener('click', () => {
+        container.scrollBy({ left: 300, behavior: 'smooth' });
+    });
+});

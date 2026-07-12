@@ -185,14 +185,181 @@ header {
     box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
-.box2 {
-    flex: 1;
-    display: grid;
-    gap: .3rem;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 1rem;
+/* ============================================
+   HORIZONTAL SCROLL SECTIONS
+   ============================================ */
+
+/* Section wrapper - flex for sidebar + scroll area */
+.sections {
+    margin: 1rem 0;
+    min-height: 25rem;
+    /* Changed from height */
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    gap: 1rem;
     background-color: #fff;
-    box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Left sidebar image */
+.box1 {
+    width: 250px;
+    flex-shrink: 0;
+    background-color: #fff;
+}
+
+.box1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Scroll wrapper */
+.scroll-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* Takes remaining space */
+}
+
+/* The scrollable container */
+.scroll-container {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+    flex: 1;
+    position: relative;
+
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Each card in scroll */
+.scroll-container .img-cont {
+    flex: 0 0 auto;
+    width: 220px;
+    /* Slightly smaller than 250 */
+    scroll-snap-align: start;
+    padding: 0.5rem;
+    box-shadow: 4px 4px 8px rgba(190, 178, 178, 0.3);
+    border-radius: 8px;
+}
+
+.scroll-container .img-cont a {
+    display: block;
+    width: 100%;
+    height: 14rem;
+    /* Image container height */
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.scroll-container .product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.scroll-container .img-cont:hover .product-img {
+    transform: scale(1.05);
+}
+
+/* Card text */
+.scroll-container .img-cont p {
+    text-align: center;
+    margin-top: 0.5rem !important;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Buttons in scroll cards */
+.scroll-container .wish_buy_cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Navigation arrows */
+.scroll-arrow {
+    background: rgba(81, 18, 169, 0.8);
+    color: #ace822;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 10;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    position: absolute;
+}
+
+.left {
+    /* Change this on button */
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.right {
+    /* Change this on button */
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.scroll-section:hover .scroll-arrow {
+    opacity: 1;
+}
+
+.scroll-arrow:hover {
+    background: #5112a9;
+}
+
+/* Hide arrows on mobile - touch scroll is natural */
+@media (max-width: 768px) {
+    .scroll-arrow {
+        display: none;
+    }
+
+    .sections {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .box1 {
+        width: 100%;
+        height: 200px;
+    }
+
+    .scroll-container .img-cont {
+        width: 180px;
+    }
 }
 
 /* Add this to your CSS */
@@ -200,6 +367,7 @@ header {
     overflow: hidden;
     padding: 1rem 1rem 4rem 1rem;
     box-shadow: 10px 10px 10px 10px rgba(190, 178, 178, 0.3);
+    position: relative;
 }
 
 .img-cont img {
@@ -216,23 +384,20 @@ header {
         height: 100%;
     }
 
-    .box2 {
+    /* .box2 {
         grid-template-columns: repeat(4, 1fr);
-    }
+    } */
 }
 
 .img-cont p {
     text-align: center;
 }
 
-.img-cont {
-    position: relative;
-    overflow: hidden;
-}
-
 .img-cont a {
     display: block;
-    height: 100%;
+    width: 100%;
+    height: 16rem;
+    overflow: hidden;
 }
 
 .product-img {
@@ -429,6 +594,7 @@ p {
     background-color: #f6f6f8;
     display: flex;
     flex-direction: row;
+    gap: 1rem;
     /* justify-content: space-between; */
 }
 
@@ -714,59 +880,6 @@ p {
 /* ============================================
    RESPONSIVE - MOBILE MEGA MENU
    ============================================ */
-
-@media (max-width: 768px) {
-    #third_layer {
-        margin: 0;
-        border: none;
-    }
-
-    .main-menu {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .menu-item {
-        width: 100%;
-        border-bottom: 1px solid #eee;
-    }
-
-    .menu-item>a {
-        padding: 1rem;
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .mega-menu {
-        position: static;
-        width: 100%;
-        min-width: auto;
-        max-width: 100%;
-        box-shadow: none;
-        border: none;
-        border-left: 4px solid #ace822;
-        display: none;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        padding: 1rem;
-        background-color: #fafafa;
-    }
-
-    .menu-item.active .mega-menu {
-        display: block;
-    }
-
-    .mega-menu-content {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .mega-column.featured {
-        display: none;
-    }
-}
-
 #cart-count {
     background-color: #ace822;
     color: #5112a9;
@@ -792,4 +905,50 @@ p {
     min-width: 20px;
     text-align: center;
     display: inline-block;
+}
+
+@media (max-width: 770px) {
+    #third_layer {
+        margin: 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    .scroll-container {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        padding: 1rem 0;
+        flex: 1;
+        position: relative;
+
+        /* Hide scrollbar */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
+@media (max-width:970px) {
+    .menu-item>a {
+        color: #5112a9;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 0.4rem 0.4rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    #about_order {
+        flex-direction: column;
+    }
+
+    #shipping {
+        display: flex;
+        margin-left: 0;
+    }
 }
