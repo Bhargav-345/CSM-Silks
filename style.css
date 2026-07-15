@@ -32,16 +32,14 @@ ul {
 }
 
 #second_layer {
-    display: flex;
-    align-items: center;
     background-color: #5112a9;
-    justify-content: space-between;
+    position: relative;
 }
 
-#ul1,
-#ul2 {
+#ul1 {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     padding: 0.5rem;
     margin-bottom: 0;
 }
@@ -60,11 +58,6 @@ ul {
     margin-right: .2rem;
 }
 
-#ul2 {
-    margin-left: auto;
-    padding: 0 2rem;
-}
-
 #third_layer ul {
     display: flex;
     align-items: center;
@@ -75,6 +68,12 @@ ul {
 
 #third_layer li {
     list-style-type: none;
+}
+
+.hamburger {
+    color: #fff;
+    display: none;
+    cursor: pointer;
 }
 
 #content1 {
@@ -88,7 +87,7 @@ ul {
 
 /* slides */
 main {
-    margin-top: 10rem;
+    margin-top: 12rem;
 }
 
 .slides-cont {
@@ -185,7 +184,6 @@ header {
 /* Section wrapper - flex for sidebar + scroll area */
 .sections {
     margin: 1rem 0;
-    min-height: 25rem;
     box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.3);
     display: flex;
     gap: 1rem;
@@ -310,7 +308,6 @@ header {
 }
 
 #clients_box {
-    flex: 1;
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(5, 1fr);
@@ -474,16 +471,18 @@ p {
     margin-right: 2rem;
 }
 
-.btn:hover {
-    background-color: #3f4293 !important;
-}
-
 #order_check input {
     padding: 0 1rem;
 }
 
 #order_check button {
     padding: 0 1rem;
+    color: #fff;
+    background-color: brown;
+}
+
+.btn:hover {
+    background-color: #3f4293 !important;
 }
 
 #shipping {
@@ -664,6 +663,22 @@ p {
     white-space: nowrap;
 }
 
+/* Hamburger button: hidden by default, shown only on mobile */
+#hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #5112a9;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+/* Dim backdrop behind the sliding mobile menu */
+#menu-backdrop {
+    display: none;
+}
+
 /* ============================================
    SUBMENU LIST - THIS FIXES THE CRAMPING!
    ============================================ */
@@ -759,7 +774,6 @@ p {
     display: inline-block;
 }
 
-
 #wish-count {
     background-color: #ace822;
     color: #5112a9;
@@ -771,6 +785,17 @@ p {
     min-width: 20px;
     text-align: center;
     display: inline-block;
+}
+
+@media (max-width: 470px) {
+    #ul1 {
+        display: flex;
+        margin: 0 1rem !important;
+    }
+
+    #ul1 .lists {
+        padding: 0.5rem 0;
+    }
 }
 
 @media (max-width: 770px) {
@@ -949,27 +974,28 @@ p {
             transform: scale(1.05);
         }
     }
+
+    #email_input input {
+        width: 35%;
+    }
+}
+
+@media (max-width:680px) {
+    .hamburger {
+        display: inline;
+        position: absolute;
+        left: 0.5rem;
+        bottom: 0.5rem;
+    }
+
+    .hamburger.active {
+        opacity: 0;
+    }
 }
 
 @media (max-width:600px) {
     #content1 {
         margin-top: 2rem;
-    }
-
-    .sections {
-        display: flex;
-        flex-direction: column;
-        padding-top: 1rem;
-    }
-
-    .box1 {
-        margin: auto;
-    }
-
-    .box1 img {
-        object-fit: cover;
-        object-position: top;
-        box-shadow: 7px 14px 21px rgba(0, 0, 0, 0.3);
     }
 
     #shipping h5 {
@@ -981,4 +1007,168 @@ p {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    /* ============================================
+       PRODUCT SECTIONS - MOBILE (Spotify/Jio style tiles)
+       Shows box1 + ~2.5 product cards in view
+       ============================================ */
+    #content2 {
+        padding: 1rem 0.6rem;
+    }
+
+    .sections {
+        height: auto;
+        gap: 0.6rem;
+        padding-bottom: 0.6rem;
+    }
+
+    /* box1 counts as one of the 2.5 visible tiles */
+    .box1 {
+        width: calc((100vw - 3.2rem) / 2.5);
+        flex-shrink: 0;
+        padding: 0;
+    }
+
+    .box1 img {
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .scroll-section {
+        margin-right: 0;
+    }
+
+    .scroll-container {
+        padding: 0.4rem 0;
+        gap: 0.6rem;
+    }
+
+    .scroll-container .img-cont {
+        width: calc((100vw - 3.2rem) / 2.5);
+        flex: 0 0 auto;
+        padding: 0.4rem;
+        border-radius: 8px;
+    }
+
+    .img-cont a {
+        height: auto;
+        aspect-ratio: 3 / 4;
+    }
+
+    .img-cont p {
+        font-size: 0.72rem;
+        margin-top: 0.4rem !important;
+        white-space: normal;
+        line-height: 1.2;
+    }
+
+    .wish_buy_cont {
+        gap: 0.4rem;
+        margin-top: 0.4rem;
+    }
+
+    .wish,
+    .buy {
+        margin-right: 0;
+        display: flex;
+        align-items: center;
+        height: 1.6rem;
+        border-radius: 2rem;
+        padding: 0.5rem 0.5rem;
+    }
+
+    .wish i,
+    .buy i {
+        font-size: 0.7rem;
+    }
+
+    #email_input input {
+        width: 40%;
+    }
+
+    #email_input button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    #our_clients {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+@media (max-width:780px) {
+
+    /* Hamburger gets visible/active at this breakpoint */
+    .hamburger {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 1;
+        position: absolute;
+        left: 0.2rem;
+        bottom: 0.6rem;
+        font-size: 1.3rem;
+        z-index: 2001;
+    }
+
+    /* No mega menu on mobile - each category has its own page now */
+    .mega-menu1,
+    .mega-menu2 {
+        display: none !important;
+    }
+
+    .menu-arrow {
+        display: none;
+    }
+
+    /* third_layer becomes a slide-in sidebar */
+    #third_layer {
+        position: fixed;
+        top: 0;
+        left: -85%;
+        width: 85%;
+        max-width: 320px;
+        height: 100vh;
+        margin: 0;
+        border: none;
+        background-color: #fff;
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+        overflow-y: auto;
+        transition: left 0.3s ease;
+        z-index: 2000;
+    }
+
+    #third_layer.active {
+        left: 0;
+    }
+
+    .main-menu {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        padding: 4rem 0 1rem;
+    }
+
+    .menu-item {
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+
+    .menu-item>a {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        font-size: 1rem;
+    }
+
+    /* Dark overlay behind the open sidebar */
+    #menu-backdrop.active {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1999;
+    }
 }

@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let cards_cont = document.getElementById('cards-cont')
 
     if (!created_list || created_list === 0) {
-        wish_container.innerHTML = '<h1> Your wishlist is empty </h1>';
+        wish_container.innerHTML = '<h1> Your wishlist is empty...! </h1>';
+        cards_cont.style.display = "none";
         return;
     }
     created_list.forEach((item, index) => {
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
             card.remove();
 
             if (created_list.length === 0) {
-                wish_container.innerHTML = "<h1>Your Wishlist is empty!</h1>";
+                wish_container.innerHTML = "<h1>Your Wishlist is empty...!</h1>";
             }
         })
         details.appendChild(name);

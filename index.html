@@ -21,24 +21,25 @@
                 <img src="images/mayura_logo.png" alt="">
             </div>
             <div id="second_layer">
+                <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
                 <ul id="ul1">
                     <li class="lists"><a href="wishlist.html"><i class="fa-regular fa-heart"></i>Wishlist<span
                                 id="wish-count">0</span></a></li>
-                    <li class="lists"><a href=""><i class="fa-solid fa-wallet"></i>Wallet</a></li>
-                </ul>
-                <ul id="ul2">
-                    <li class="lists" id="li2"><a href=""><i class="fa-regular fa-circle-user"></i>Login | Sign Up</a>
+                    <li class="lists"><a href=""><i class="fa-regular fa-circle-user"></i>Login | Sign Up</a>
                     </li>
                     <li class="lists"><a href="cart.html"><i class="fa-solid fa-dolly"></i>Cart <span
                                 id="cart-count">0</span></a></li>
                 </ul>
             </div>
 
+            <div id="menu-backdrop"></div>
+
             <div id="third_layer">
                 <ul class="main-menu">
                     <!-- New Arrivals -->
                     <li class="menu-item">
-                        <a href="#">New Arrivals <i class="fa-solid fa-chevron-down menu-arrow"></i></a>
+                        <a href="new.html" class="nextlinks">New Arrivals <i
+                                class="fa-solid fa-chevron-down menu-arrow"></i></a>
                         <div class="mega-menu1">
                             <div class="mega-menu-content">
                                 <div class="mega-column">
@@ -630,8 +631,10 @@
             <div id="about_order">
                 <div id="order_check">
                     <h5>Order Tracking</h5>
-                    <input type="text" placeholder="Order Id">
-                    <button class="order_submit">Submit</button>
+                    <div>
+                        <input type="text" placeholder="Order Id">
+                        <button class="order_submit btn">Submit</button>
+                    </div>
                 </div>
                 <div id="shipping">
                     <h5>Shipping </h5>
@@ -650,38 +653,44 @@
     </footer>
 
     <script>
-        // ============================================
-        // MOBILE MEGA MENU TOGGLE
-        // ============================================
+
+        // MOBILE SIDEBAR MENU (hamburger in second_layer)
 
         document.addEventListener('DOMContentLoaded', function () {
-            const menuItems = document.querySelectorAll('.menu-item');
+            const hamburgerBtn = document.querySelector('.hamburger');
+            const thirdLayer = document.getElementById('third_layer');
+            const backdrop = document.getElementById('menu-backdrop');
+            const hamburgerIcon = hamburgerBtn.querySelector('i');
 
-            // Mobile: toggle mega menu on click
-            menuItems.forEach(item => {
-                const link = item.querySelector('a');
+            function openMobileMenu() {
+                thirdLayer.classList.add('active');
+                backdrop.classList.add('active');
+                hamburgerIcon.classList.remove('fa-bars');
+                hamburgerIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
+            }
 
-                link.addEventListener('click', function (e) {
-                    // Only on mobile (screen width <= 768px)
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        // Close other open menus
-                        menuItems.forEach(otherItem => {
-                            if (otherItem !== item) {
-                                otherItem.classList.remove('active');
-                            }
-                        });
-                        // Toggle current menu
-                        item.classList.toggle('active');
-                    }
-                });
+            function closeMobileMenu() {
+                thirdLayer.classList.remove('active');
+                backdrop.classList.remove('active');
+                hamburgerIcon.classList.remove('fa-xmark');
+                hamburgerIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+
+            hamburgerBtn.addEventListener('click', function () {
+                if (thirdLayer.classList.contains('active')) {
+                    closeMobileMenu();
+                } else {
+                    openMobileMenu();
+                }
             });
 
-            // Close mega menu when clicking outside
-            document.addEventListener('click', function (e) {
-                if (!e.target.closest('.main-menu')) {
-                    menuItems.forEach(item => item.classList.remove('active'));
-                }
+            backdrop.addEventListener('click', closeMobileMenu);
+
+            // Tapping a category link navigates to its page - just close the sidebar first
+            thirdLayer.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
             });
         });
 
