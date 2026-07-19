@@ -1,5 +1,4 @@
 // Clear cart on every page reload 
-localStorage.removeItem('scm_cart');
 
 // Initialize cart
 let cart = JSON.parse(localStorage.getItem('scm_cart')) || [];
@@ -9,6 +8,7 @@ function updateCartCount() {
     if (countElement) {
         countElement.textContent = cart.length;
     }
+    let cart_store = cart.length;
 }
 
 function addToCart(product) {
@@ -36,8 +36,6 @@ buyButtons.forEach(button => {
 updateCartCount();
 
 // wish//
-localStorage.removeItem('scm_wish');
-
 let wish = JSON.parse(localStorage.getItem('scm_wish')) || [];
 
 function updatewishcount() {
@@ -77,10 +75,24 @@ document.querySelectorAll('.scroll-section').forEach(section => {
     const rightBtn = section.querySelector('.scroll-arrow.right');
 
     leftBtn.addEventListener('click', () => {
-        container.scrollBy({ left: -300, behavior: 'smooth' });
+        container.scrollBy({ left: -100, behavior: 'smooth' });
     });
 
     rightBtn.addEventListener('click', () => {
-        container.scrollBy({ left: 300, behavior: 'smooth' });
+        container.scrollBy({ left: 100, behavior: 'smooth' });
+    });
+});
+
+document.querySelectorAll('.category_scroll-section').forEach(section => {
+    const container = section.querySelector('.category_cont');
+    const leftBtn = section.querySelector('.scroll-arrow.left');
+    const rightBtn = section.querySelector('.scroll-arrow.right');
+
+    leftBtn.addEventListener('click', () => {
+        container.scrollBy({ left: -100, behavior: 'smooth' });
+    });
+
+    rightBtn.addEventListener('click', () => {
+        container.scrollBy({ left: 100, behavior: 'smooth' });
     });
 });

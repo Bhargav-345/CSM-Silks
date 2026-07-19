@@ -87,7 +87,7 @@ ul {
 
 /* slides */
 main {
-    margin-top: 12rem;
+    margin-top: 10rem;
 }
 
 .slides-cont {
@@ -488,6 +488,7 @@ p {
 #shipping {
     display: flex;
     margin-left: auto;
+    padding: 0.4rem;
 }
 
 #shipping h5 {
@@ -790,7 +791,7 @@ p {
 @media (max-width: 470px) {
     #ul1 {
         display: flex;
-        margin: 0 1rem !important;
+        margin-left: 2rem;
     }
 
     #ul1 .lists {
@@ -824,6 +825,7 @@ p {
     #shipping {
         display: flex;
         margin-left: 0;
+        border-top: 1px solid #000;
     }
 }
 
@@ -981,6 +983,10 @@ p {
 }
 
 @media (max-width:680px) {
+    #content1 {
+        height: 400px;
+    }
+
     .hamburger {
         display: inline;
         position: absolute;
@@ -1099,6 +1105,21 @@ p {
     }
 }
 
+@media (max-width:500px) {
+    #content1 {
+        height: 300px;
+    }
+
+    #about_order {
+        margin: 0;
+        padding: 0;
+    }
+
+    #shipping {
+        padding: 0.5rem 0;
+    }
+}
+
 @media (max-width:780px) {
 
     /* Hamburger gets visible/active at this breakpoint */
@@ -1143,6 +1164,10 @@ p {
 
     #third_layer.active {
         left: 0;
+    }
+
+    main {
+        margin-top: 7rem;
     }
 
     .main-menu {

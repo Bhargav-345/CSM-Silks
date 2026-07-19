@@ -11,7 +11,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -72,7 +71,7 @@
 
                     <!-- Women -->
                     <li class="menu-item">
-                        <a href="#">Women <i class="fa-solid fa-chevron-down menu-arrow"></i></a>
+                        <a href="women_dress.html">Women <i class="fa-solid fa-chevron-down menu-arrow"></i></a>
                         <div class="mega-menu1">
                             <div class="mega-menu-content">
                                 <div class="mega-column">
@@ -104,7 +103,7 @@
 
                     <!-- Men -->
                     <li class="menu-item">
-                        <a href="#">Men <i class="fa-solid fa-chevron-down menu-arrow"></i></a>
+                        <a href="men_dress.html">Men <i class="fa-solid fa-chevron-down menu-arrow"></i></a>
                         <div class="mega-menu1">
                             <div class="mega-menu-content">
                                 <div class="mega-column">
@@ -136,7 +135,7 @@
 
                     <!-- Kids -->
                     <li class="menu-item">
-                        <a href="#">Kids <i class="fa-solid fa-chevron-down menu-arrow"></i></a>
+                        <a href="Kids_dress.html">Kids <i class="fa-solid fa-chevron-down menu-arrow"></i></a>
                         <div class="mega-menu2">
                             <div class="mega-menu-content">
                                 <div class="mega-column">
@@ -168,7 +167,7 @@
 
                     <!-- Sarees Collection -->
                     <li class="menu-item">
-                        <a href="#">Sarees Collection <i class="fa-solid fa-chevron-down menu-arrow"></i></a>
+                        <a href="Sarees.html">Sarees Collection <i class="fa-solid fa-chevron-down menu-arrow"></i></a>
                         <div class="mega-menu2">
                             <div class="mega-menu-content">
                                 <div class="mega-column">
@@ -213,7 +212,8 @@
 
                     <!-- Summer Collection -->
                     <li class="menu-item">
-                        <a href="#">Summer Collection <i class="fa-solid fa-chevron-down menu-arrow"></i></a>
+                        <a href="Summer_dress.html">Summer Collection <i
+                                class="fa-solid fa-chevron-down menu-arrow"></i></a>
                         <div class="mega-menu2">
                             <div class="mega-menu-content">
                                 <div class="mega-column">
@@ -679,6 +679,7 @@
             }
 
             hamburgerBtn.addEventListener('click', function () {
+
                 if (thirdLayer.classList.contains('active')) {
                     closeMobileMenu();
                 } else {
@@ -714,7 +715,13 @@
             dots[index - 1].className += " active";
             setTimeout(displayslide, 2000); // Change image every 2 seconds
         }
+
     </script>
 </body>
+<script>
+    localStorage.removeItem('scm_cart');
+    localStorage.removeItem('scm_wish');
+</script>
+<script src="script.js" defer></script>
 
 </html>
